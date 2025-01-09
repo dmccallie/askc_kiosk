@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/styles.css?v=1.0">
+</head>
+<body>
+    <div id="fixed_header">
+        <h3>Welcome to Powell Observatory</h3>
+    </div>
+    <div id="homePage">
+        <div class="">
+            <button class="nav"  id="openStellarium">View Stellarium</button>
+        </div>
+        <a href="powell-schedule.html"><h2>Powell Schedule</h2></a>
+        <h2>Other home page stuff here</h2>
+    </div>
+    <div id="stellariumPage" style="display: none; background-color: black;">
+        <button class="nav" id="backToHome">Back to Home</button>
+        <div class="XXXiframe-container">
+            <iframe id="stellariumIframe" src="https://stellarium-web.org/"
+             frameborder="0"
+             allow="geolocation"
+             sandbox="allow-same-origin allow-scripts"
+            style="width: 100%; height: 85vh;"></iframe>
+        </div>  
+    </div>
+</body>
+<script>
+    const homePage = document.getElementById('homePage');
+    const stellariumPage = document.getElementById('stellariumPage');
+    const openStellarium = document.getElementById('openStellarium');
+    const backToHome = document.getElementById('backToHome');
+    const iframe = document.getElementById('stellariumIframe');
+
+    openStellarium.addEventListener('click', () => {
+        //alert('beforeunload' + iframe.contentWindow.location.href);
+        homePage.style.display = 'none';
+        stellariumPage.style.display = 'block';
+    });
+
+    backToHome.addEventListener('click', () => {
+        stellariumPage.style.display = 'none';
+        homePage.style.display = 'block';
+    });
+
+    window.addEventListener('beforeunload', () => {
+        console.log('beforeunload' + iframe.contentWindow.location.href);
+        localStorage.setItem('stellariumUrl', iframe.contentWindow.location.href);
+    });
+</script>
+
+</html>
