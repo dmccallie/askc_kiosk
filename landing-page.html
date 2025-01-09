@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powell Observatory</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            /* height: 50px; */
+            padding: 10px 0;
+            text-align: center;
+            background-color: #1f2833;
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: #66fcf1;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
+        }
+
+        header:hover {
+            /* transform: scale(.95); */
+            /* background-color: #0b0c10; */
+            /* border-color: #66fcf1; */
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #1f2833;
+            border: 2px solid #45a29e;
+            border-radius: 10px;
+            color: #c5c6c7;
+            text-align: center;
+            width: 200px;
+            height: 200px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+            background-color: #0b0c10;
+            border-color: #66fcf1;
+        }
+
+        .menu-item img {
+            max-width: 140px;
+            margin-bottom: 10px;
+        }
+
+        .menu-item svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .content-section {
+            display: none;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #tonights-sky-section iframe {
+            width: 100%;
+            height: 80vh;
+            border: none;
+
+        }
+
+        #tonights-sky-section {
+            padding: 0px !important;
+}
+
+        @media (max-width: 768px) {
+            .menu-item {
+                width: 150px;
+                height: 150px;
+                font-size: 1rem;
+            }
+
+            .menu-item img, .menu-item svg {
+                max-width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header onclick="showSection('main-menu')">Welcome to Powell Observatory</header>
+
+    <!-- Main Menu -->
+    <div id="main-menu" class="menu-container">
+        <button class="menu-item" onclick="showSection('schedule-section')">
+            <img src="icons/schedule.svg" alt="Schedule Icon">
+            Observatory Schedule
+        </button>
+        <button class="menu-item" onclick="showSection('private-night-section')">
+            <img src="icons/private-night.svg" alt="Private Night Icon">
+            Schedule a Private Night
+        </button>
+        <button class="menu-item" onclick="showSection('donation-section')">
+            <img src="icons/donation.svg" alt="Donation Icon">
+            Make a Donation
+        </button>
+        <button class="menu-item" onclick="showSection('tonights-sky-section')">
+            <img src="assets/icons/stellarium.png" alt="Tonight's Sky Icon">
+            View Tonight's Sky
+        </button>
+    </div>
+
+    <!-- Sections for each menu item -->
+    <div id="schedule-section" class="content-section">
+        <h2>Observatory Schedule</h2>
+        <p>Details about the observatory schedule go here.</p>
+    </div>
+
+    <div id="private-night-section" class="content-section">
+        <h2>Schedule a Private Night</h2>
+        <p>Details about scheduling a private night go here.</p>
+    </div>
+
+    <div id="donation-section" class="content-section">
+        <h2>Make a Donation</h2>
+        <p>Details about making a donation go here.</p>
+    </div>
+
+    <div id="tonights-sky-section" class="content-section">
+        <div class="iframe-container">
+            <iframe id="stellariumIframe" src="https://stellarium-web.org/"
+             frameborder="0"
+             allow="geolocation"
+             sandbox="allow-same-origin allow-scripts"
+             style="width: 100%; height: calc(100vh - 48px);"></iframe>
+        </div>  
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.menu-container, .content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            const section = document.getElementById(sectionId);
+            if (section) {
+                // Use 'flex' for the menu-container, 'block' for content sections
+                section.style.display = section.classList.contains('menu-container') ? 'flex' : 'block';
+            }
+        }
+    </script>
+</body>
+</html>
