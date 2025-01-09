@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellarium Web</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <div class="header">
+        <button id="backButton">Go Back to Home</button>
+    </div>
+    <div class="iframe-container">
+        <iframe src="https://stellarium-web.org/" title="Stellarium Web" frameborder="0"></iframe>
+    </div>
+    <script>
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = 'index.html'; // Navigate to the home page
+        });
+    </script>
+</body>
+</html>
+
+

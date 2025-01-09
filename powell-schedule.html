@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellarium Web</title>
+    <link rel="stylesheet" href="assets/styles.css?v=1.0">
+</head>
+<body>
+    <div class="header">
+        <button id="backButton">Go Back to Home</button>
+    </div>
+    <div class="">
+        <li>
+            <h3> Powell Observatory Schedule </h3>
+            <ul>
+                <li> Friday, 7:00 PM - 10:00 PM </li>
+                <li> Saturday, 7:00 PM - 10:00 PM </li>
+                <li> Sunday, 7:00 PM - 10:00 PM </li>
+            </ul>
+        </li>
+    </div>
+    <script>
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = 'index.html'; // Navigate to the home page
+        });
+    </script>
+</body>
+</html>
